@@ -1,7 +1,10 @@
 {
   "mcpServers": {
     "upload-post": {
-      "url": "https://mcp.upload-post.com/mcp"
+      "url": "https://mcp.upload-post.com/mcp",
+      "headers": {
+        "Authorization": "ApiKey ${UPLOAD_POST_API_KEY}"
+      }
     }
   }
 }

@@ -56,6 +56,27 @@ Run the server on any Docker-capable host (Fly, Railway, Cloud Run, your own box
 ```
 
 `Authorization: Bearer <key>` is also accepted, for clients that only allow Bearer.
+The scheme prefix is required — a bare key with no `ApiKey`/`Bearer` in front returns `401`.
+
+### Working on this repo
+
+This repository ships a `.mcp.json` that points at the official hosted endpoint, so the
+tools are available while developing here. It reads the key from the environment instead
+of hard-coding it:
+
+```jsonc
+{
+  "mcpServers": {
+    "upload-post": {
+      "url": "https://mcp.upload-post.com/mcp",
+      "headers": { "Authorization": "ApiKey ${UPLOAD_POST_API_KEY}" }
+    }
+  }
+}
+```
+
+Export `UPLOAD_POST_API_KEY` (or put it in an untracked `.env`) before starting the client.
+Never commit a real key to this file.
 
 ---
 
